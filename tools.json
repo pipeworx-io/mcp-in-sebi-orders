@@ -1,0 +1,40 @@
+[
+  {
+    "name": "in_sebi_orders_list",
+    "description": "List the newest Securities and Exchange Board of India enforcement orders that name a company, intermediary or fund: adjudication orders, orders of the Chairperson/Members and settlement orders passed by the Board, with order date, title (\"Adjudication Order in the matter of ...\") and the link: an order page (read it with in_sebi_orders_read) or, for some orders, the order document itself (`link_kind`). Reads the board's 25 newest orders in one category. Titles naming a natural person (research analysts, individual brokers) are dropped and counted in `person_or_unclassified_dropped`. `name` keeps rows whose title contains it. Only the first page of a category is read, so an older order is not found here and no row is not a clearance. Example: category=\"adjudication\".",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "category": {
+          "type": "string",
+          "enum": [
+            "adjudication",
+            "chairperson_members",
+            "settlement_board"
+          ],
+          "description": "adjudication (default), chairperson_members, or settlement_board."
+        },
+        "name": {
+          "type": "string",
+          "description": "Optional company name to look for in order titles, at least 3 characters (Limited, Ltd, Private are ignored)."
+        }
+      }
+    }
+  },
+  {
+    "name": "in_sebi_orders_read",
+    "description": "Read one Securities and Exchange Board of India enforcement order's own page, by the link from in_sebi_orders_list: the title, order date, order category and the link to the order document (PDF) that carries the findings, the penalty and the noticees. The page itself holds no order text, so the document link is the content to open. Example: link=\"https://www.sebi.gov.in/enforcement/orders/nov-2026/adjudication-order-in-the-matter-of-swastika-investmart-limited_105600.html\".",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "link": {
+          "type": "string",
+          "description": "Order page link exactly as returned by in_sebi_orders_list."
+        }
+      },
+      "required": [
+        "link"
+      ]
+    }
+  }
+]

@@ -1,0 +1,33 @@
+{
+  "name": "@pipeworx/mcp-in-sebi-orders",
+  "version": "0.1.0",
+  "description": "in-sebi-orders -- the Securities and Exchange Board of India's enforcement orders: adjudication orders, orders of the Chairperson / Members and settlement orders passed by the Board. Keyless; each call reads ONE category list page as the board shows it (the 25 newest orders) or ONE order's own page.",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./tools.json": "./tools.json",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "mcp-in-sebi-orders": "bin/cli.js"
+  },
+  "files": ["bin/", "lib/", "tools.json", "server.json"],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": ["mcp", "mcp-server", "model-context-protocol", "pipeworx", "in-sebi-orders"],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pipeworx-io/mcp-in-sebi-orders.git"
+  },
+  "mcpName": "io.github.pipeworx-io/in-sebi-orders",
+  "pipeworx": {
+    "mode": "gateway",
+    "slug": "in-sebi-orders",
+    "gatewaySlug": "in-sebi-orders",
+    "sourceHash": "v1-91250199b0a392c749d6735c51fe9be606697423710eb981d6d248a338f8eee2",
+    "sourceCommit": "9b123410e80fd80deb8ee57bee9f84a34f5e3430"
+  }
+}
